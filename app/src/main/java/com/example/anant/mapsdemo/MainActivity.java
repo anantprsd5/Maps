@@ -19,7 +19,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     private final String TAG = "MapActivity";
 
     private GoogleApiClient mGoogleApiClient;
-    private TextView textView;
+    private TextView latitude;
+    private TextView longitude;
     private LocationRequest mLocationRequest;
 
     @Override
@@ -33,7 +34,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
                 addOnConnectionFailedListener(this).
                 build();
 
-        textView = (TextView) findViewById(R.id.textView);
+        latitude = (TextView) findViewById(R.id.latitude);
+        longitude = (TextView)findViewById(R.id.longitude);
     }
 
     @Override
@@ -84,7 +86,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     @Override
     public void onLocationChanged(Location location){
         Log.i(TAG,location.toString());
-        textView.setText(Double.toString(location.getLatitude()));
+        latitude.setText(Double.toString(location.getLatitude()));
+        longitude.setText(Double.toString(location.getLongitude()));
     }
 
 
